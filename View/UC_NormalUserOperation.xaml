@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="View.UC_NormalUserOperation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" >
+    <Viewbox Stretch="None">
+        
+            <Grid Width="1600" Height="800">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1400"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.RowSpan="2" Background="LightGray" Height="800">
+                    <TextBlock Text="一般使用者選項" FontSize="16" Background="DarkGray" Foreground="White" Padding="5"/>
+                    <Button x:Name="btnEditProfile" Content="編輯基本資料" Margin="10" Click="btnEditProfile_Click" FontSize="14"/>
+                    <Button x:Name="btnEditPet" Content="編輯寵物資料" Margin="10" FontSize="14" Visibility="Hidden"/>
+                    <Button x:Name="btnEditActivity" Content="編輯活動資訊" Margin="10" FontSize="14" Visibility="Hidden"/>
+                    <Button x:Name="btnSearch" Content="查詢個人紀錄" Margin="10" FontSize="14" Visibility="Hidden"/>
+                <Button x:Name="btnShopping" Content="寵物用品商城" Margin="10" FontSize="14" Click="btnShopping_Click"/>
+                <Button x:Name="btnForum" Content="寵物討論區" Margin="10" FontSize="14" Click="btnForum_Click" />
+                <Button x:Name="btnDeleteUser" Content="刪除帳號" Margin="10, 140, 10, 10" Click="btnDeleteUser_Click" FontSize="14" Foreground="Red"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="歡迎回來! 親愛的{0}{1}!">
+                            <Binding Path="Lastname"/>
+                            <Binding Path="Firstname"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <Grid x:Name="gridNormalUser" Grid.Column="1" Grid.Row="1" Width="1400" Height="750"/>
+
+
+            </Grid>
+       
+    </Viewbox>
+</UserControl>

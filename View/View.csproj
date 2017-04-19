@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0964DAF6-C45F-42C7-B3C5-FF6F8BBFAA22}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>View</RootNamespace>
+    <AssemblyName>View</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.4.3.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.4.3\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="presentationframework.aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.4.3\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ABCClass1.cs" />
+    <Compile Include="Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PetPostAddControl.xaml.cs">
+      <DependentUpon>PetPostAddControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PetPostMain.xaml.cs">
+      <DependentUpon>PetPostMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Merchandise.xaml.cs">
+      <DependentUpon>Merchandise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PetPostControl.xaml.cs">
+      <DependentUpon>PetPostControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PetUserControl1.xaml.cs">
+      <DependentUpon>PetUserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PetUserControl2.xaml.cs">
+      <DependentUpon>PetUserControl2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SeacrerADD.xaml.cs">
+      <DependentUpon>SeacrerADD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="shoppinginbus.xaml.cs">
+      <DependentUpon>shoppinginbus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UCAdoption.xaml.cs">
+      <DependentUpon>UCAdoption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AdministratorEditNormalUser.xaml.cs">
+      <DependentUpon>UC_AdministratorEditNormalUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AdministratorOperation.xaml.cs">
+      <DependentUpon>UC_AdministratorOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC_NormalUserEdit.xaml.cs">
+      <DependentUpon>UC_NormalUserEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC_NormalUserOperation.xaml.cs">
+      <DependentUpon>UC_NormalUserOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC_NormalUserRegistration.xaml.cs">
+      <DependentUpon>UC_NormalUserRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Template.xaml.cs">
+      <DependentUpon>UC_Template.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="W_AdministratorAddNormalUser.xaml.cs">
+      <DependentUpon>W_AdministratorAddNormalUser.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Index.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PetPostAddControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="PetPostMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Merchandise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PetPostControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PetUserControl1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PetUserControl2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SeacrerADD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="shoppinginbus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Dictionary_BasicControlTemplate_HorizontalListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Dictionary_BasicControlTemplate_VerticalListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Dictionary_Brush.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UCAdoption.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UC_AdministratorEditNormalUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC_AdministratorOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC_NormalUserEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC_NormalUserOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC_NormalUserRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC_Template.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="W_AdministratorAddNormalUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Model.UserInformation.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\paw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\profile_default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{76849862-1553-4dfb-94f9-c5353f06366b}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{f0d78bd0-8b1b-4f5e-92c7-2cff90441174}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icon_option_cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\dog4798797.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1495-wht-star-blank-4x.png&amp;scale=1.0.png" />
+    <Resource Include="images\20080703-1.gif" />
+    <Resource Include="images\about_logo.png" />
+    <Resource Include="images\depositphotos_43089761-stock-photo-vet-and-dog-with-banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\logo.png" />
+    <Resource Include="images\placard-banner-dog-pug-behind-blank-white-open-mouth-surprised-43834249.jpg" />
+    <Resource Include="images\shopping-cart_t.png" />
+    <Resource Include="images\ToolsIconCart.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Underline.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Italic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bold-icon-23247.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ImageStack_48x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\paste_40x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Copy_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cut_24x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\berries.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

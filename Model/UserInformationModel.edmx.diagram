@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fa29e5fa1fe4e2b9fe560c9383a8d41" Name="Diagram1">
+        <EntityTypeShape EntityType="UserModel.UserInformation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UserModel.PetAdoption" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserModel.PetPostText" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UserModel.Store" Width="1.5" PointX="3.75" PointY="8.5" />
+        <EntityTypeShape EntityType="UserModel.Category" Width="1.5" PointX="3.75" PointY="11" />
+        <EntityTypeShape EntityType="UserModel.Merchandise" Width="1.5" PointX="6" PointY="5" />
+        <EntityTypeShape EntityType="UserModel.Order" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UserModel.Type" Width="1.5" PointX="3.75" PointY="5.75" />
+        <AssociationConnector Association="UserModel.FK_merchandise_store" />
+        <AssociationConnector Association="UserModel.FK_merchandise_Type" />
+        <AssociationConnector Association="UserModel.Merchandise_Category_View" />
+        <AssociationConnector Association="UserModel.FK_Order_merchandise" />
+        <EntityTypeShape EntityType="UserModel.NormalUserPet" Width="1.5" PointX="3" PointY="1.5" />
+        <AssociationConnector Association="UserModel.FK_Pet_UserInformation1" />
+        <EntityTypeShape EntityType="UserModel.Hospital" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UserModel.Hotel" Width="1.5" PointX="8.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

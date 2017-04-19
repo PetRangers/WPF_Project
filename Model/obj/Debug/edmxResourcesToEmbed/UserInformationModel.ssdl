@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="HospitaNumber" />
+    </Key>
+    <Property Name="HospitaNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HospitalName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HospitalAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressArea" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HospitalPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PetRace" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BusinessHours" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Emergency" Type="nvarchar" MaxLength="50" />
+    <Property Name="OutpatientProject" Type="nvarchar" MaxLength="50" />
+    <Property Name="Equipment" Type="nvarchar" MaxLength="50" />
+    <Property Name="WebAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="OnlineConsultation" Type="nvarchar" MaxLength="50" />
+    <Property Name="OnView" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6013: 資料表/檢視 'WPF_ProjectDB.dbo.Hospital.AddressArea' 未定義主索引鍵，也無法推斷有效的主索引鍵。此資料表/檢視已被排除。如果要使用此實體，您必須檢閱您的結構描述，加入正確的索引鍵，並將它取消註解。
+        <EntityType Name="Hospital_AddressArea">
+          <Property Name="AddressArea" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'WPF_ProjectDB.dbo.Hotel' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="HotelName" />
+    </Key>
+    <Property Name="HotelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HotelAddress" Type="nchar" MaxLength="10" />
+    <Property Name="HotelArea" Type="nchar" MaxLength="10" />
+    <Property Name="HotelPhone" Type="nchar" MaxLength="10" />
+    <Property Name="PetRace" Type="nchar" MaxLength="10" />
+    <Property Name="BusinessHours" Type="nchar" MaxLength="10" />
+    <Property Name="Facility" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="NormalUserPet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OwnerID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Species" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PetAdoption">
+    <Key>
+      <PropertyRef Name="PetID" />
+    </Key>
+    <Property Name="PetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Yearold" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Furcolor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PostDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PetPostText">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContentText" Type="nvarchar(max)" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="store_ID" />
+    </Key>
+    <Property Name="store_ID" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="store_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="store_Phone" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varbinary" MaxLength="32" Nullable="false" />
+    <Property Name="salt" Type="varbinary" MaxLength="32" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="20" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="RegistrationDate" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="LoginCount" Type="int" Nullable="false" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Merchandise">
+    <Key>
+      <PropertyRef Name="merchandise_ID" />
+    </Key>
+    <Property Name="merchandise_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="merchandise_store_ID" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="merchandise_TypeID" Type="int" Nullable="false" />
+    <Property Name="merchandise_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="merchandise_Price" Type="money" Nullable="false" />
+    <Property Name="merchandise_Photo" Type="varbinary(max)" />
+    <Property Name="merchandise_Description" Type="varchar(max)" />
+    <Property Name="merchandise_Fitness" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'WPF_ProjectDB.ShoppingNetwork.Merchandise_Category_View' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="Merchandise_Category_View">
+    <Key>
+      <PropertyRef Name="Merchandise_ID" />
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Merchandise_ID" Type="int" Nullable="false" />
+    <Property Name="Category_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Order_ID" />
+    </Key>
+    <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="merchandise_ID" Type="int" Nullable="false" />
+    <Property Name="merchandise_Volume" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Type_ID" />
+    </Key>
+    <Property Name="Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Merchandise_Category_View_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Merchandise_Category_View" Type="Self.Merchandise_Category_View" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Category_ID" />
+      </Principal>
+      <Dependent Role="Merchandise_Category_View">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Merchandise_Category_View_merchandise">
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="1" />
+    <End Role="Merchandise_Category_View" Type="Self.Merchandise_Category_View" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Merchandise">
+        <PropertyRef Name="merchandise_ID" />
+      </Principal>
+      <Dependent Role="Merchandise_Category_View">
+        <PropertyRef Name="Merchandise_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_merchandise_store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="store_ID" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="merchandise_store_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_merchandise_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Type_ID" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="merchandise_TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_merchandise">
+    <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Merchandise">
+        <PropertyRef Name="merchandise_ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="merchandise_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pet_UserInformation1">
+    <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NormalUserPet" Type="Self.NormalUserPet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInformation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NormalUserPet">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UserModelStoreContainer">
+    <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NormalUserPet" EntityType="Self.NormalUserPet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PetAdoption" EntityType="Self.PetAdoption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PetPostText" EntityType="Self.PetPostText" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInformation" EntityType="Self.UserInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="ShoppingNetwork" store:Type="Tables" />
+    <EntitySet Name="Merchandise" EntityType="Self.Merchandise" Schema="ShoppingNetwork" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="ShoppingNetwork" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="ShoppingNetwork" store:Type="Tables" />
+    <EntitySet Name="Hotel" EntityType="Self.Hotel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Hotel].[HotelName] AS [HotelName], 
+    [Hotel].[HotelAddress] AS [HotelAddress], 
+    [Hotel].[HotelArea] AS [HotelArea], 
+    [Hotel].[HotelPhone] AS [HotelPhone], 
+    [Hotel].[PetRace] AS [PetRace], 
+    [Hotel].[BusinessHours] AS [BusinessHours], 
+    [Hotel].[Facility] AS [Facility]
+    FROM [dbo].[Hotel] AS [Hotel]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Merchandise_Category_View" EntityType="Self.Merchandise_Category_View" store:Type="Tables" store:Schema="ShoppingNetwork">
+      <DefiningQuery>SELECT 
+    [Merchandise_Category_View].[Merchandise_ID] AS [Merchandise_ID], 
+    [Merchandise_Category_View].[Category_ID] AS [Category_ID]
+    FROM [ShoppingNetwork].[Merchandise_Category_View] AS [Merchandise_Category_View]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Merchandise_Category_View_Category" Association="Self.FK_Merchandise_Category_View_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Merchandise_Category_View" EntitySet="Merchandise_Category_View" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Merchandise_Category_View_merchandise" Association="Self.FK_Merchandise_Category_View_merchandise">
+      <End Role="Merchandise" EntitySet="Merchandise" />
+      <End Role="Merchandise_Category_View" EntitySet="Merchandise_Category_View" />
+    </AssociationSet>
+    <AssociationSet Name="FK_merchandise_store" Association="Self.FK_merchandise_store">
+      <End Role="Store" EntitySet="Store" />
+      <End Role="Merchandise" EntitySet="Merchandise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_merchandise_Type" Association="Self.FK_merchandise_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Merchandise" EntitySet="Merchandise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_merchandise" Association="Self.FK_Order_merchandise">
+      <End Role="Merchandise" EntitySet="Merchandise" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pet_UserInformation1" Association="Self.FK_Pet_UserInformation1">
+      <End Role="UserInformation" EntitySet="UserInformation" />
+      <End Role="NormalUserPet" EntitySet="NormalUserPet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

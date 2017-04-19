@@ -1,0 +1,138 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="ListBox" >
+   
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}" >
+                    <Border 
+							BorderBrush="Gray" 
+							BorderThickness="1" 
+							CornerRadius="6" 
+						    Background="AliceBlue">
+                            <ScrollViewer 
+								VerticalScrollBarVisibility="Disabled" 
+								HorizontalScrollBarVisibility="Auto">
+                                <StackPanel  
+									        IsItemsHost="True" 
+									        Orientation="Horizontal" 
+									        HorizontalAlignment="Left" Background="DarkBlue" >
+                                    
+                                </StackPanel>
+                          
+
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+
+            <Setter.Value>
+                <DataTemplate>
+
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border Margin="2" Grid.Column="0"  CornerRadius="4" Padding="4" Background="White"
+                                    HorizontalAlignment="Center">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#aaa" Offset="0" />
+                                    <GradientStop Color="#222" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+
+
+                            <Image  Width="70" Height="60" Margin="2,2,2,2"   Source="{Binding LargePhoto}">
+
+                                <Image.Triggers>
+                                    <EventTrigger RoutedEvent="Image.MouseEnter">
+                                        <EventTrigger.Actions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation  To="100" Duration="0:0:0.2" Storyboard.TargetProperty="Width">
+
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation  To="90" Duration="0:0:0.2" Storyboard.TargetProperty="Height">
+
+                                                    </DoubleAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger.Actions>
+
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Image.MouseLeave">
+                                        <EventTrigger.Actions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation   Duration="0:0:0.2" Storyboard.TargetProperty="Width">
+
+                                                    </DoubleAnimation>
+
+                                                    <DoubleAnimation   Duration="0:0:0.2" Storyboard.TargetProperty="Height">
+
+                                                    </DoubleAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger.Actions>
+
+                                    </EventTrigger>
+
+                                </Image.Triggers>
+                            </Image>
+
+
+                        </Border>
+
+                        <TextBlock Grid.Row="1" FontSize="14" HorizontalAlignment="Center" Foreground="White"
+                           Margin="5" Text="{Binding ModifiedDate}" FontWeight="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+            
+
+        </Setter>
+
+    </Style>
+
+    
+    <!--====================================-->
+    <!--for ListBoxItem Control Template-->
+    <SolidColorBrush x:Key="ListTextSelectedColor" Color="Red"/>
+    <SolidColorBrush x:Key="ListSelectedColor" x:Shared="False" Color="Blue"/>
+
+    <Style  TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="_Border"
+                                Padding="2"
+                                SnapsToDevicePixels="true">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="_Border" Property="Background" Value="{StaticResource ResourceKey=ListSelectedColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource ResourceKey=ListTextSelectedColor}"/>
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="_Border" Property="Background" Value="Orange"/>
+                            <Setter Property="Foreground" Value="Black"/>
+
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>                

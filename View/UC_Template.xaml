@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="View.UC_Template"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1600">
+    <Viewbox Stretch="Fill">
+        <Grid Width="1600" Height="800"  Background="AntiqueWhite">
+            <TextBlock Width="294" Height="86" Text="左上按鈕點開後有登錄一般會員功能。" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" TextWrapping="WrapWithOverflow" Margin="10,10,0,0"/>
+            <TextBlock Width="698" Height="auto" Text="右上可進行登入。依據帳號種類不同，會進入不同的管理介面。" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" TextWrapping="WrapWithOverflow" Margin="892,10,0,0"/>
+            <TextBlock Width="708" Height="auto" Text="系統管理員: ID:jdj  PW:qqq123     可進行使用者資料管理、動物領養資料管理、動物服務資料管理" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" TextWrapping="WrapWithOverflow" Margin="892,122,0,0"/>
+            <TextBlock Width="708" Height="auto" Text="系統管理員: ID:store1  PW:aaa     可進行商品上架管理" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" TextWrapping="WrapWithOverflow" Margin="892,231,0,0"/>
+            <TextBlock Width="708" Height="auto" Text="系統管理員: ID:SS  PW:aaa     可進行基本資料編輯、寵物用品商城購物、討論區留言" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" TextWrapping="WrapWithOverflow" Margin="892,348,0,0"/>
+
+        </Grid>
+    </Viewbox>
+</UserControl>

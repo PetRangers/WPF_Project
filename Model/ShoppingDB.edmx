@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AnimalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="store_ID" />
+          </Key>
+          <Property Name="store_ID" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="store_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="store_Phone" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Merchandise">
+          <Key>
+            <PropertyRef Name="merchandise_ID" />
+          </Key>
+          <Property Name="merchandise_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchandise_store_ID" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="merchandise_TypeID" Type="int" Nullable="false" />
+          <Property Name="merchandise_Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="merchandise_Price" Type="money" Nullable="false" />
+          <Property Name="merchandise_Photo" Type="varbinary(max)" />
+          <Property Name="merchandise_Description" Type="varchar(max)" />
+          <Property Name="merchandise_Fitness" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Animal.ShoppingNetwork.Merchandise_Category_View' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="Merchandise_Category_View">
+          <Key>
+            <PropertyRef Name="Merchandise_ID" />
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Merchandise_ID" Type="int" Nullable="false" />
+          <Property Name="Category_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="merchandise_ID" Type="int" Nullable="false" />
+          <Property Name="merchandise_Volume" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type_ID" />
+          </Key>
+          <Property Name="Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Merchandise_Category_View_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Merchandise_Category_View" Type="Self.Merchandise_Category_View" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Merchandise_Category_View">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Merchandise_Category_View_merchandise">
+          <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="1" />
+          <End Role="Merchandise_Category_View" Type="Self.Merchandise_Category_View" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchandise">
+              <PropertyRef Name="merchandise_ID" />
+            </Principal>
+            <Dependent Role="Merchandise_Category_View">
+              <PropertyRef Name="Merchandise_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_merchandise_store">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="store_ID" />
+            </Principal>
+            <Dependent Role="Merchandise">
+              <PropertyRef Name="merchandise_store_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_merchandise_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Type_ID" />
+            </Principal>
+            <Dependent Role="Merchandise">
+              <PropertyRef Name="merchandise_TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_merchandise">
+          <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchandise">
+              <PropertyRef Name="merchandise_ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="merchandise_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnimalModelStoreContainer">
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="ShoppingNetwork" store:Type="Tables" />
+          <EntitySet Name="Merchandise" EntityType="Self.Merchandise" Schema="ShoppingNetwork" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="ShoppingNetwork" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="ShoppingNetwork" store:Type="Tables" />
+          <EntitySet Name="Merchandise_Category_View" EntityType="Self.Merchandise_Category_View" store:Type="Tables" store:Schema="ShoppingNetwork">
+            <DefiningQuery>SELECT 
+    [Merchandise_Category_View].[Merchandise_ID] AS [Merchandise_ID], 
+    [Merchandise_Category_View].[Category_ID] AS [Category_ID]
+    FROM [ShoppingNetwork].[Merchandise_Category_View] AS [Merchandise_Category_View]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Merchandise_Category_View_Category" Association="Self.FK_Merchandise_Category_View_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Merchandise_Category_View" EntitySet="Merchandise_Category_View" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Merchandise_Category_View_merchandise" Association="Self.FK_Merchandise_Category_View_merchandise">
+            <End Role="Merchandise" EntitySet="Merchandise" />
+            <End Role="Merchandise_Category_View" EntitySet="Merchandise_Category_View" />
+          </AssociationSet>
+          <AssociationSet Name="FK_merchandise_store" Association="Self.FK_merchandise_store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Merchandise" EntitySet="Merchandise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_merchandise_Type" Association="Self.FK_merchandise_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Merchandise" EntitySet="Merchandise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_merchandise" Association="Self.FK_Order_merchandise">
+            <End Role="Merchandise" EntitySet="Merchandise" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnimalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Merchandises" Relationship="Self.Merchandise_Category_View" FromRole="Category" ToRole="Merchandise" />
+        </EntityType>
+        <EntityType Name="Merchandise">
+          <Key>
+            <PropertyRef Name="merchandise_ID" />
+          </Key>
+          <Property Name="merchandise_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchandise_store_ID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="merchandise_TypeID" Type="Int32" Nullable="false" />
+          <Property Name="merchandise_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="merchandise_Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="merchandise_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="merchandise_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="merchandise_Fitness" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_merchandise_Type" FromRole="Merchandise" ToRole="Type" />
+          <NavigationProperty Name="Categories" Relationship="Self.Merchandise_Category_View" FromRole="Merchandise" ToRole="Category" />
+          <NavigationProperty Name="Store" Relationship="AnimalModel.FK_merchandise_store" FromRole="Merchandise" ToRole="Store" />
+          <NavigationProperty Name="Orders" Relationship="AnimalModel.FK_Order_merchandise" FromRole="Merchandise" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type_ID" />
+          </Key>
+          <Property Name="Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Merchandises" Relationship="Self.FK_merchandise_Type" FromRole="Type" ToRole="Merchandise" />
+        </EntityType>
+        <Association Name="FK_merchandise_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Type_ID" />
+            </Principal>
+            <Dependent Role="Merchandise">
+              <PropertyRef Name="merchandise_TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Merchandise_Category_View">
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <End Role="Merchandise" Type="Self.Merchandise" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AnimalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Merchandises" EntityType="Self.Merchandise" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <AssociationSet Name="FK_merchandise_Type" Association="Self.FK_merchandise_Type">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Merchandise" EntitySet="Merchandises" />
+          </AssociationSet>
+          <AssociationSet Name="Merchandise_Category_View" Association="Self.Merchandise_Category_View">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Merchandise" EntitySet="Merchandises" />
+          </AssociationSet>
+          <EntitySet Name="Stores" EntityType="AnimalModel.Store" />
+          <AssociationSet Name="FK_merchandise_store" Association="AnimalModel.FK_merchandise_store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Merchandise" EntitySet="Merchandises" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="AnimalModel.Order" />
+          <AssociationSet Name="FK_Order_merchandise" Association="AnimalModel.FK_Order_merchandise">
+            <End Role="Merchandise" EntitySet="Merchandises" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="store_ID" />
+          </Key>
+          <Property Name="store_ID" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="store_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="store_Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Merchandises" Relationship="AnimalModel.FK_merchandise_store" FromRole="Store" ToRole="Merchandise" />
+        </EntityType>
+        <Association Name="FK_merchandise_store">
+          <End Type="AnimalModel.Store" Role="Store" Multiplicity="1" />
+          <End Type="AnimalModel.Merchandise" Role="Merchandise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="store_ID" />
+            </Principal>
+            <Dependent Role="Merchandise">
+              <PropertyRef Name="merchandise_store_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="merchandise_ID" Type="Int32" Nullable="false" />
+          <Property Name="merchandise_Volume" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Merchandise" Relationship="AnimalModel.FK_Order_merchandise" FromRole="Order" ToRole="Merchandise" />
+        </EntityType>
+        <Association Name="FK_Order_merchandise">
+          <End Type="AnimalModel.Merchandise" Role="Merchandise" Multiplicity="1" />
+          <End Type="AnimalModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchandise">
+              <PropertyRef Name="merchandise_ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="merchandise_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AnimalModelStoreContainer" CdmEntityContainer="AnimalEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="AnimalModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Merchandises">
+            <EntityTypeMapping TypeName="AnimalModel.Merchandise">
+              <MappingFragment StoreEntitySet="Merchandise">
+                <ScalarProperty Name="merchandise_ID" ColumnName="merchandise_ID" />
+                <ScalarProperty Name="merchandise_store_ID" ColumnName="merchandise_store_ID" />
+                <ScalarProperty Name="merchandise_TypeID" ColumnName="merchandise_TypeID" />
+                <ScalarProperty Name="merchandise_Name" ColumnName="merchandise_Name" />
+                <ScalarProperty Name="merchandise_Price" ColumnName="merchandise_Price" />
+                <ScalarProperty Name="merchandise_Photo" ColumnName="merchandise_Photo" />
+                <ScalarProperty Name="merchandise_Description" ColumnName="merchandise_Description" />
+                <ScalarProperty Name="merchandise_Fitness" ColumnName="merchandise_Fitness" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="AnimalModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+                <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Merchandise_Category_View" TypeName="AnimalModel.Merchandise_Category_View" StoreEntitySet="Merchandise_Category_View">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+            </EndProperty>
+            <EndProperty Name="Merchandise">
+              <ScalarProperty Name="merchandise_ID" ColumnName="Merchandise_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="AnimalModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="store_Phone" ColumnName="store_Phone" />
+                <ScalarProperty Name="store_Name" ColumnName="store_Name" />
+                <ScalarProperty Name="store_ID" ColumnName="store_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="AnimalModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="merchandise_Volume" ColumnName="merchandise_Volume" />
+                <ScalarProperty Name="merchandise_ID" ColumnName="merchandise_ID" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

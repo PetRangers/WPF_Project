@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="983a94e5a924432e83b2bb2d33011936" Name="Diagram1">
+        <EntityTypeShape EntityType="AnimalModel.Category" Width="1.5" PointX="1" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimalModel.Merchandise" Width="2.25" PointX="5.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnimalModel.Type" Width="1.5" PointX="5.875" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="AnimalModel.FK_merchandise_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="AnimalModel.Merchandise_Category_View" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AnimalModel.Store" Width="1.5" PointX="3" PointY="0.625" />
+        <AssociationConnector Association="AnimalModel.FK_merchandise_store" />
+        <EntityTypeShape EntityType="AnimalModel.Order" Width="1.5" PointX="8.125" PointY="1.75" />
+        <AssociationConnector Association="AnimalModel.FK_Order_merchandise" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

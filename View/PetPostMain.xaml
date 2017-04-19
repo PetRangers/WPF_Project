@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="PetWPF.PetPostMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetWPF"
+        mc:Ignorable="d">
+    <Viewbox>
+        <Grid MinWidth="1400" MinHeight="750">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="79*"/>
+                <ColumnDefinition Width="571*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            
+            <!--將下面的ListBox改成Grid，以排除威廷引用的listbox資源對這裡造成的影響。-->
+            <!--結果LINK在後面還有用更多的listbox，所以也沒用。-->
+            <ListBox x:Name="listBox" Grid.Column="1"/>
+            <StackPanel>
+                <Button x:Name="Post" Content="Post" Click="Post_Click" Margin="2" FontSize="14"/>
+                <Button x:Name="Search" Content="Search" Click="Search_Click" Margin="2" FontSize="14"/>
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</UserControl>

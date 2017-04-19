@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AnimalModelStoreContainer" CdmEntityContainer="AnimalEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="AnimalModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Merchandises">
+      <EntityTypeMapping TypeName="AnimalModel.Merchandise">
+        <MappingFragment StoreEntitySet="Merchandise">
+          <ScalarProperty Name="merchandise_ID" ColumnName="merchandise_ID" />
+          <ScalarProperty Name="merchandise_store_ID" ColumnName="merchandise_store_ID" />
+          <ScalarProperty Name="merchandise_TypeID" ColumnName="merchandise_TypeID" />
+          <ScalarProperty Name="merchandise_Name" ColumnName="merchandise_Name" />
+          <ScalarProperty Name="merchandise_Price" ColumnName="merchandise_Price" />
+          <ScalarProperty Name="merchandise_Photo" ColumnName="merchandise_Photo" />
+          <ScalarProperty Name="merchandise_Description" ColumnName="merchandise_Description" />
+          <ScalarProperty Name="merchandise_Fitness" ColumnName="merchandise_Fitness" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="AnimalModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+          <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Merchandise_Category_View" TypeName="AnimalModel.Merchandise_Category_View" StoreEntitySet="Merchandise_Category_View">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+      </EndProperty>
+      <EndProperty Name="Merchandise">
+        <ScalarProperty Name="merchandise_ID" ColumnName="Merchandise_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="AnimalModel.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="store_Phone" ColumnName="store_Phone" />
+          <ScalarProperty Name="store_Name" ColumnName="store_Name" />
+          <ScalarProperty Name="store_ID" ColumnName="store_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="AnimalModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="merchandise_Volume" ColumnName="merchandise_Volume" />
+          <ScalarProperty Name="merchandise_ID" ColumnName="merchandise_ID" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

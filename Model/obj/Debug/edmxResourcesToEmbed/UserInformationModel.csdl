@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="Binary" MaxLength="32" FixedLength="false" Nullable="false" />
+    <Property Name="salt" Type="Binary" MaxLength="32" FixedLength="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Firstname" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LoginCount" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NormalUserPets" Relationship="UserModel.FK_Pet_UserInformation1" FromRole="UserInformation" ToRole="NormalUserPet" />
+  </EntityType>
+  <EntityContainer Name="WPF_ProjectDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserInformations" EntityType="Self.UserInformation" />
+    <EntitySet Name="PetAdoptions" EntityType="UserModel.PetAdoption" />
+    <EntitySet Name="PetPostTexts" EntityType="UserModel.PetPostText" />
+    <EntitySet Name="Stores" EntityType="UserModel.Store" />
+    <EntitySet Name="Categories" EntityType="UserModel.Category" />
+    <EntitySet Name="Merchandises" EntityType="UserModel.Merchandise" />
+    <EntitySet Name="Orders" EntityType="UserModel.Order" />
+    <EntitySet Name="Types" EntityType="UserModel.Type" />
+    <AssociationSet Name="FK_merchandise_store" Association="UserModel.FK_merchandise_store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Merchandise" EntitySet="Merchandises" />
+    </AssociationSet>
+    <AssociationSet Name="FK_merchandise_Type" Association="UserModel.FK_merchandise_Type">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="Merchandise" EntitySet="Merchandises" />
+    </AssociationSet>
+    <AssociationSet Name="Merchandise_Category_View" Association="UserModel.Merchandise_Category_View">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Merchandise" EntitySet="Merchandises" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_merchandise" Association="UserModel.FK_Order_merchandise">
+      <End Role="Merchandise" EntitySet="Merchandises" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="NormalUserPets" EntityType="UserModel.NormalUserPet" />
+    <AssociationSet Name="FK_Pet_UserInformation1" Association="UserModel.FK_Pet_UserInformation1">
+      <End Role="UserInformation" EntitySet="UserInformations" />
+      <End Role="NormalUserPet" EntitySet="NormalUserPets" />
+    </AssociationSet>
+    <EntitySet Name="Hospitals" EntityType="UserModel.Hospital" />
+    <EntitySet Name="Hotels" EntityType="UserModel.Hotel" />
+  </EntityContainer>
+  <EntityType Name="PetAdoption">
+    <Key>
+      <PropertyRef Name="PetID" />
+    </Key>
+    <Property Name="PetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Yearold" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Furcolor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Region" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PetPostText">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="store_ID" />
+    </Key>
+    <Property Name="store_ID" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="store_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="store_Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Merchandises" Relationship="UserModel.FK_merchandise_store" FromRole="Store" ToRole="Merchandise" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Category_ID" />
+    </Key>
+    <Property Name="Category_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Merchandises" Relationship="UserModel.Merchandise_Category_View" FromRole="Category" ToRole="Merchandise" />
+  </EntityType>
+  <EntityType Name="Merchandise">
+    <Key>
+      <PropertyRef Name="merchandise_ID" />
+    </Key>
+    <Property Name="merchandise_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="merchandise_store_ID" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="merchandise_TypeID" Type="Int32" Nullable="false" />
+    <Property Name="merchandise_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="merchandise_Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="merchandise_Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="merchandise_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="merchandise_Fitness" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Store" Relationship="UserModel.FK_merchandise_store" FromRole="Merchandise" ToRole="Store" />
+    <NavigationProperty Name="Type" Relationship="UserModel.FK_merchandise_Type" FromRole="Merchandise" ToRole="Type" />
+    <NavigationProperty Name="Categories" Relationship="UserModel.Merchandise_Category_View" FromRole="Merchandise" ToRole="Category" />
+    <NavigationProperty Name="Orders" Relationship="UserModel.FK_Order_merchandise" FromRole="Merchandise" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Order_ID" />
+    </Key>
+    <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="merchandise_ID" Type="Int32" Nullable="false" />
+    <Property Name="merchandise_Volume" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Merchandise" Relationship="UserModel.FK_Order_merchandise" FromRole="Order" ToRole="Merchandise" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Type_ID" />
+    </Key>
+    <Property Name="Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Merchandises" Relationship="UserModel.FK_merchandise_Type" FromRole="Type" ToRole="Merchandise" />
+  </EntityType>
+  <Association Name="FK_merchandise_store">
+    <End Type="UserModel.Store" Role="Store" Multiplicity="1" />
+    <End Type="UserModel.Merchandise" Role="Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="store_ID" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="merchandise_store_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_merchandise_Type">
+    <End Type="UserModel.Type" Role="Type" Multiplicity="1" />
+    <End Type="UserModel.Merchandise" Role="Merchandise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Type_ID" />
+      </Principal>
+      <Dependent Role="Merchandise">
+        <PropertyRef Name="merchandise_TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Merchandise_Category_View">
+    <End Type="UserModel.Category" Role="Category" Multiplicity="*" />
+    <End Type="UserModel.Merchandise" Role="Merchandise" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Order_merchandise">
+    <End Type="UserModel.Merchandise" Role="Merchandise" Multiplicity="1" />
+    <End Type="UserModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Merchandise">
+        <PropertyRef Name="merchandise_ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="merchandise_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NormalUserPet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OwnerID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Species" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserInformation" Relationship="UserModel.FK_Pet_UserInformation1" FromRole="NormalUserPet" ToRole="UserInformation" />
+  </EntityType>
+  <Association Name="FK_Pet_UserInformation1">
+    <End Type="UserModel.UserInformation" Role="UserInformation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="UserModel.NormalUserPet" Role="NormalUserPet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInformation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NormalUserPet">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="HospitaNumber" />
+    </Key>
+    <Property Name="HospitaNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HospitalName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HospitalAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressArea" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HospitalPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PetRace" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessHours" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Emergency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OutpatientProject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Equipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WebAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OnlineConsultation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OnView" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="HotelName" />
+    </Key>
+    <Property Name="HotelName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HotelAddress" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HotelArea" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HotelPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PetRace" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="BusinessHours" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Facility" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+</Schema>
