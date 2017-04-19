@@ -72,7 +72,7 @@
                 <ComboBoxItem Content="Cat"/>
             </ComboBox>
         </Menu>
-        <RichTextBox x:Name="richTextBox" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Visible"  SelectionChanged="richTextBox_SelectionChanged" Grid.Row="2" Background="#FFF5EECB">
+        <RichTextBox x:Name="richTextBox" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Visible"  SelectionChanged="richTextBox_SelectionChanged" Grid.Row="2" Background="#FFDACBF5">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"></Setter>
