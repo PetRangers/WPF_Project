@@ -439,7 +439,7 @@
                     <WrapPanel.Effect>
                         <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="1" Color="Red"/>
                     </WrapPanel.Effect>
-                    <CheckBox Content="cat" IsChecked="True" FontFamily="Bradley Hand ITC" FontSize="18" FontWeight="Bold"/>
+                    <CheckBox Content="cat1" IsChecked="True" FontFamily="Bradley Hand ITC" FontSize="18" FontWeight="Bold"/>
                     <CheckBox Content="dog" FontFamily="Bradley Hand ITC" FontSize="18" FontWeight="Bold"/>
                     <CheckBox Content="else" FontFamily="Bradley Hand ITC" FontSize="18" FontWeight="Bold"/>
                 </WrapPanel>
