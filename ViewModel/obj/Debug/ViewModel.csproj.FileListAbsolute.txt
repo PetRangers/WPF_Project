@@ -39,3 +39,16 @@ C:\Users\III\Source\Repos\WPF_Project\ViewModel\bin\Debug\zh-Hant\EntityFramewor
 C:\Users\III\Source\Repos\WPF_Project\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
 C:\Users\III\Source\Repos\WPF_Project\ViewModel\obj\Debug\ViewModel.dll
 C:\Users\III\Source\Repos\WPF_Project\ViewModel\obj\Debug\ViewModel.pdb
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\ViewModel.dll.config
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\ViewModel.dll
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\ViewModel.pdb
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\EntityFramework.dll
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\Model.dll
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\Model.pdb
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\EntityFramework.xml
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\bin\Debug\zh-Hant\EntityFramework.resources.dll
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\obj\Debug\ViewModel.dll
+C:\Users\III\Documents\GitHub\WPF_Project\ViewModel\obj\Debug\ViewModel.pdb

@@ -118,7 +118,7 @@
                                 Padding="2"
                                 SnapsToDevicePixels="true"
                              BorderThickness="5" 
-                            CornerRadius="20" Margin="5" Background="{DynamicResource DarkBrush}"
+                            CornerRadius="20" Margin="5" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"
                             >
                         <Border.Effect>
                             <DropShadowEffect/>

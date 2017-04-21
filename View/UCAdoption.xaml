@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Adoption"
              xmlns:ClassLibrary1="clr-namespace:Model;assembly=Model" 
             x:Class="Adoption.UCAdoption"
-             mc:Ignorable="d" Loaded="UserControl_Loaded" Height="730" Width="1400">
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Height="800" Width="1400">
     <UserControl.Resources>
         <CollectionViewSource x:Key="petViewSource" d:DesignSource="{d:DesignInstance {x:Type ClassLibrary1:PetAdoption}, CreateList=True}"/>
         <Storyboard x:Key="sb1">
@@ -88,7 +88,7 @@
         </StackPanel>
 
 
-        <DockPanel Name="Updatepanel" Margin="412,119,523,337" RenderTransformOrigin="0.5,0.5" Opacity="1" Grid.Column="1" Background="#FF09F4FF">
+        <DockPanel Name="Updatepanel" Margin="412,119,428,429" RenderTransformOrigin="0.5,0.5" Opacity="0" Grid.Column="1" Background="#FF09F4FF">
             <DockPanel.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -100,7 +100,7 @@
             <Border DockPanel.Dock="Left" CornerRadius="20" BorderThickness="5" HorizontalAlignment="Left" Height="243" VerticalAlignment="Top" Width="228">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF00FF17" Offset="0"/>
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
@@ -110,7 +110,7 @@
                         <GradientStop Color="#FFEC0404"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
-                <Grid x:Name="grid1" VerticalAlignment="Top" Height="217" Background="{DynamicResource NormalBrush}" Margin="9,9,9,9" HorizontalAlignment="Left" Width="199">
+                <Grid x:Name="grid1" VerticalAlignment="Top" Height="217" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Margin="9,9,9,9" HorizontalAlignment="Left" Width="199">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -145,7 +145,7 @@
 
         </DockPanel>
 
-        <DockPanel Name="Addpanel" HorizontalAlignment="Left" Height="188" LastChildFill="False" Margin="412,119,0,0" VerticalAlignment="Top" Width="329" Background="#FF09F4FF" Grid.Column="1">
+        <DockPanel Name="Addpanel" HorizontalAlignment="Left" Height="181" LastChildFill="False" Margin="412,119,0,0" VerticalAlignment="Top" Width="329" Background="#FF09F4FF" Grid.Column="1" Opacity="0">
             <DockPanel.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -157,7 +157,7 @@
             <Border DockPanel.Dock="Left" CornerRadius="20" BorderThickness="5" HorizontalAlignment="Left" Height="178" VerticalAlignment="Top" Width="221">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF00FF17" Offset="0"/>
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
@@ -167,7 +167,7 @@
                         <GradientStop Color="#FFEC0404"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
-                <Grid x:Name="grid2" HorizontalAlignment="Left" Background="{DynamicResource NormalBrush}" Margin="10,3,0,0" VerticalAlignment="Top">
+                <Grid x:Name="grid2" HorizontalAlignment="Left" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Margin="10,3,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
