@@ -72,7 +72,7 @@
                 <ComboBoxItem Content="Cat"/>
             </ComboBox>
         </Menu>
-        <RichTextBox x:Name="richTextBox" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Visible"  SelectionChanged="richTextBox_SelectionChanged" Grid.Row="2" Background="#FFDACBF5">
+        <RichTextBox x:Name="richTextBox" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Visible"  SelectionChanged="richTextBox_SelectionChanged" Grid.Row="2" Background="#FFF5EED3">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0"></Setter>
@@ -85,7 +85,7 @@
             </FlowDocument>
         </RichTextBox>
         <DockPanel Grid.Row="3">
-            <Label Name="label1" Content="time" VerticalAlignment="Center" FontSize="48" ></Label>
+            <Label Name="label1" Content="time" VerticalAlignment="Center" FontSize="40" ></Label>
             <Button Content="Enter" Click="Button_Click" Margin="2" HorizontalAlignment="Right" DockPanel.Dock="Right" FontSize="24" />
             <Button Content="Clear" DockPanel.Dock="Right" Margin="2" HorizontalAlignment="Right" Click="Button_Click_1" FontSize="24"/>
         </DockPanel>
